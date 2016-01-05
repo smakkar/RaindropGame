@@ -25,7 +25,7 @@ class Raindrop {
   boolean isInContactWith(Catcher ca) {
     float dis=dist(loc.x, loc.y, mouse.x, mouse.y); 
     boolean e;
-    if (dis<diam/2) {
+    if (dis<=diam/2) {
       e=true;
     } else {
       e=false;
