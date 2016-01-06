@@ -9,7 +9,7 @@ float start;
 // On your own, create an array of Raindrop objects instead of just one
 // Use the array instead of the single object
 // You can start out by just using the single Raindrop as you test
-
+//declaring variables
 
 void setup() {
   start=1;
@@ -53,8 +53,8 @@ void hoops() {                                  //code for the actual game
       score+=1;                    // add one to the score
     }
   }
-  ca.display(); 
-  ca.update();
+  ca.display();  //display the catcher
+  ca.update();   //update the catcher
   textSize(32);
   fill(0);
   text(score, width/2, 700);
