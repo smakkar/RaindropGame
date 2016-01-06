@@ -1,16 +1,17 @@
 class Raindrop {
   PVector vel, accel, loc;
   int diam;
+  PImage ball;
 
   Raindrop(float x, float y) {
     vel= new PVector(random(-10, 10), random(-1, 1));
     accel= new PVector(0, .1511);
     loc= new PVector(x, y);
     diam=50;
+    ball = loadImage("ball.jpg");
   }
   void display() {
-    fill(1, 240, 122);
-    ellipse(loc.x, loc.y, diam, diam);
+    image(ball, loc.x, loc.y);
   }
 
   void fall() {
@@ -25,7 +26,7 @@ class Raindrop {
   boolean isInContactWith(Catcher ca) {
     float dis=dist(loc.x, loc.y, mouse.x, mouse.y); 
     boolean e;
-    if (dis<=diam/2) {
+    if (dis< diam/2 + ca.diam) {
       e=true;
     } else {
       e=false;

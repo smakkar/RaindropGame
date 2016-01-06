@@ -1,7 +1,8 @@
+import java.util.ArrayList;
 PImage court;
 int count = 100;
 PVector mouse;   //declare a P
-Raindrop [] r= new Raindrop [count];      //declare a new Raindrop called r
+ArrayList<Raindrop> raindrops=new Arraylist<Raindrop>();
 Catcher ca;
 int score;
 float start;
@@ -16,7 +17,8 @@ void setup() {
   mouse = new PVector();    //initialize mouse PVector. value is irrelevant since it will be set at the start of void draw(){}
   ca=new Catcher(100);
   for (int i =0; i < count; i++) {
-    r[i] = new Raindrop(random(width), random(-height, 0));   //Initialize r. The parameters used are the initial x and y positions
+      Raindrop ball = raindrops.get(e);
+    ball = new Raindrop(random(width), random(-height, 0));   //Initialize r. The parameters used are the initial x and y positions
   }
 }
 
@@ -40,14 +42,15 @@ void hoops() {
   court();
   mouse.set(mouseX, mouseY);             //set value of mouse as mouseX,mouseY
   
-  for (int i=0; i<count; i++) {
-    r[i].fall();         //make the raindrop fall. It should accelerate as if pulled towards the ground by earth's gravity
-    r[i].display();      //display the raindrop
-    if (r[i].isInContactWith(ca)) {      //check to see if the raindrop is in contact with the point represented by the PVector called mouse
-      r[i].reset();                         //if it is, reset the raindrop
+  for (int e =raindrops.size()-1; e>=0; e--) {
+  Raindrop ball = raindrops.get(e);         //make the raindrop fall. It should accelerate as if pulled towards the ground by earth's gravity
+    ball.display();      //display the raindrop
+  ball.fall();
+    if (ball.isInContactWith(ca)) {      //check to see if the raindrop is in contact with the point represented by the PVector called mouse
+      ball.reset();                         //if it is, reset the raindrop
     }
-    if (r[i].loc.y > height + r[i].diam/2) {     //check to see if the raindrop goes below the bottom of the screen
-      r[i].reset();                           //if it does, reset the raindrop
+    if (ball.loc.y > height + ball.diam/2) {     //check to see if the raindrop goes below the bottom of the screen
+      ball.reset();                           //if it does, reset the raindrop
       score+=1;                    // add one to the score
     }
   }
@@ -56,7 +59,7 @@ void hoops() {
   textSize(32);
   fill(0);
   text(score, width/2, 700);
-  if (score>200) { //when the score is more than 200
+  if (score>275) { //when the score is more than 275 aka player has missed more than 275 balls
     gameover();  //the player wins the game and it ends the game
   }
 }
@@ -68,7 +71,7 @@ void gameover() { //code to end game
   text("Game Over!", width/2, height/2);
 }
 
-void court() {
+void court() { //image for the background
   court=loadImage("court.jpg");
   image(court, 0, 0);
 }
