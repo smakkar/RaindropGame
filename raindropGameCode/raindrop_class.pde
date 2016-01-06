@@ -4,7 +4,7 @@ class Raindrop {
   PImage ball;
 
   Raindrop(float x, float y) {
-    vel= new PVector(random(-10, 10), random(-1, 1));
+    vel= new PVector(random(-3, 3), random(-1, 1));
     accel= new PVector(0, .1511);
     loc= new PVector(x, y);
     diam=50;

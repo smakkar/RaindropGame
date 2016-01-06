@@ -15,6 +15,6 @@ class Catcher {  //creating the catcher
   }
 
   void update() {
-    loc.set(mouseX, mouseY);
+    loc.set(mouseX-25, mouseY-25);
   }
 }
