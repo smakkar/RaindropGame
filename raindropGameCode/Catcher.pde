@@ -1,4 +1,4 @@
-class Catcher {
+class Catcher {  //creating the catcher
   PVector loc;
   int diam;
 

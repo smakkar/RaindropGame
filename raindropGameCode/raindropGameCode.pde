@@ -19,36 +19,23 @@ void setup() {
   }
 }
 
-void start() {
-
-if (start == 1){ //initial screen
-
-background (0); //background color
-
-textSize(32); //text size
-
-text("Play Pong!",width/2-100,200); //text will be "Play Pong"
-
-text("Surya Makkar",width/2-100,500); //text will be "Surya Makkar"
-
-text("Press any Key to Start",width/2-100,300); //text will be "Press any Key"
-
-if (keyPressed == true) { //if any key is pressed
-
-start = 2; //the game will start
-
-}
-
-}
-
-if (start ==2){ //when the game starts
-
-draw(); //this will be the game that starts and the code for the game is below
-
-}
-
-}
 void draw() {
+  if (start == 1) { //initial screen
+    background (0); //background color
+    textSize(32); //text size
+    text("Play Hoops!", width/2-100, 200); //text will be "Play Pong"
+    text("Press any Key to Start", width/2-100, 300); //text will be "Press any Key"
+    if (keyPressed == true) { //if any key is pressed
+      start = 2; //the game will start
+    }
+  }
+
+  if (start ==2) { //when the game starts
+
+    hoops(); //this will be the game that starts and the code for the game is below
+  }
+}
+void hoops() {
   mouse.set(mouseX, mouseY);             //set value of mouse as mouseX,mouseY
   background(0, 200, 255);
   for (int i=0; i<count; i++) {
@@ -59,22 +46,22 @@ void draw() {
     }
     if (r[i].loc.y > height + r[i].diam/2) {     //check to see if the raindrop goes below the bottom of the screen
       r[i].reset();                           //if it does, reset the raindrop
-            score+=1;
+      score+=1;                    // add one to the score
     }
   }
-  ca.display();
+  ca.display(); 
   ca.update();
   textSize(32);
   fill(0);
   text(score, width/2, 700);
-  if (score>200){
-    game();
-  }
+  if (score>200) { //when the score is more than 200
+    gameover();  //the player wins the game and it ends the game
+  } 
 }
 
-void game(){
+void gameover() { //code to end game
   background(0);
-    textSize(48);
-    fill(255);
-  text("Game Over!",width/2,height/2);
+  textSize(48);
+  fill(255);
+  text("Game Over!", width/2, height/2);
 }
