@@ -1,3 +1,4 @@
+PImage court;
 int count = 100;
 PVector mouse;   //declare a P
 Raindrop [] r= new Raindrop [count];      //declare a new Raindrop called r
@@ -23,7 +24,7 @@ void draw() {
   if (start == 1) { //initial screen
     background (0); //background color
     textSize(32); //text size
-    text("Play Hoops!", width/2-100, 200); //text will be "Play Pong"
+    text("Play Hoops!", width/2, 200); //text will be "Play Pong"
     text("Press any Key to Start", width/2-100, 300); //text will be "Press any Key"
     if (keyPressed == true) { //if any key is pressed
       start = 2; //the game will start
@@ -36,8 +37,9 @@ void draw() {
   }
 }
 void hoops() {
+  court();
   mouse.set(mouseX, mouseY);             //set value of mouse as mouseX,mouseY
-  background(0, 200, 255);
+  
   for (int i=0; i<count; i++) {
     r[i].fall();         //make the raindrop fall. It should accelerate as if pulled towards the ground by earth's gravity
     r[i].display();      //display the raindrop
@@ -56,7 +58,7 @@ void hoops() {
   text(score, width/2, 700);
   if (score>200) { //when the score is more than 200
     gameover();  //the player wins the game and it ends the game
-  } 
+  }
 }
 
 void gameover() { //code to end game
@@ -64,4 +66,9 @@ void gameover() { //code to end game
   textSize(48);
   fill(255);
   text("Game Over!", width/2, height/2);
+}
+
+void court() {
+  court=loadImage("court.jpg");
+  image(court, 0, 0);
 }
