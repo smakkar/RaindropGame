@@ -58,7 +58,7 @@ void hoops() {                                  //code for the actual game
   textSize(32);
   fill(0);
   text(score, width/2, 700);
-  if (score>1) { //when the score is more than 275 aka player has missed more than 275 balls
+  if (score>275) { //when the score is more than 275 aka player has missed more than 275 balls
     gameover();  //the player wins the game and it ends the game
   }
 }
