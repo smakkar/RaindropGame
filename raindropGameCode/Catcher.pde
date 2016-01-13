@@ -6,7 +6,7 @@ class Catcher {  //creating the catcher
   Catcher (int tdiam) {    //creating the catcher
     loc=new PVector() ;    //location of the catcher is a 
     diam=tdiam;
-    hoop = loadImage("hoop.jpg");
+    hoop = loadImage("lantern.png");
   }
 
   void display() {
