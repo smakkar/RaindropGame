@@ -3,21 +3,20 @@ class Raindrop {
   float diam;
   color c;
 
-  Raindrop(float x,float y) {
-    diam = random(20,50);
+  Raindrop(float x, float y) {
+    diam = random(20, 50);
     loc = new PVector(random(diam, width-diam), 0);
     vel= new PVector(0, random(15));
-    c = color(232,222,4);
+    c = color(random(255), random(255), random(255));
   }
 
   //after declaring fields and setting up constructors, you can define your methods
   void display() {
     fill(c);
     noStroke();
-     for (int i = 2; i < diam/2; i++ ) {
-      ellipse(loc.x,loc.y + i*4,i*2,i*2);
+    for (int i = 2; i < diam/2; i++ ) {
+      ellipse(loc.x, loc.y + i*4, i*2, i*2);
     }
-
   }
   void fall() {
     vel.limit(5);
@@ -26,7 +25,7 @@ class Raindrop {
 
   void reset() {
     loc.y=0;
-    loc.add(vel); 
+    loc.add(vel);
   }
 
   boolean isInContactWith(Catcher thing) {

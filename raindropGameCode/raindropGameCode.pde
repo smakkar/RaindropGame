@@ -38,7 +38,7 @@ void draw() {
 }
 void hoops() {                                  //code for the actual game
   raindrops.add(new Raindrop(random(width), 0));  //initialize the image
-  court();                                //background image
+  background(0);                              //background image
   mouse.set(mouseX, mouseY);             //set value of mouse as mouseX,mouseY
 
   for (int e =raindrops.size()-1; e>=0; e--) {
@@ -46,19 +46,20 @@ void hoops() {                                  //code for the actual game
     ball.display();      //display the raindrop
     ball.fall();        //make the balls come down
     if (ball.isInContactWith(ca)) {      //check to see if the raindrop is in contact with the point represented by the PVector called mouse
-      ball.reset();                         //if it is, reset the raindrop
+      ball.reset();        //if it is, reset the raindrop
+      score +=1;
     }
     if (ball.loc.y > height + ball.diam/2) {     //check to see if the raindrop goes below the bottom of the screen
       ball.reset();                           //if it does, reset the raindrop
-      score+=1;                    // add one to the score
+      score-=1;                    // add one to the score
     }
   }
   ca.display();  //display the catcher
   ca.update();   //update the catcher
   textSize(32);
-  fill(0);
+  fill(252,250,254);
   text(score, width/2, 700);
-  if (score>275) { //when the score is more than 275 aka player has missed more than 275 balls
+  if (score>375) { //when the score is more than 275 aka player has missed more than 275 balls
     gameover();  //the player wins the game and it ends the game
   }
 }
@@ -67,7 +68,7 @@ void gameover() { //code to end game
   not();    //backrgound for final screen
   textSize(48);
   fill(255);
-  text("Game Over! You Dropped Too Many Balls!", 180, height/2);
+  text("You Win!", 180, height/2);
 }
 
 void court() { //image for the background
@@ -81,6 +82,5 @@ void nike() {                  //image for beginning of game
 }
 
 void not() {                 //image function for end of game background
-  not=loadImage("not.jpg");
-  image(not, 0, 0);
+  background(0);
 }
