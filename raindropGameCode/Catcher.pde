@@ -1,16 +1,16 @@
 class Catcher {  //creating the catcher
   PVector loc; 
   int diam;
-  PImage hoop;    //the catcher will be an image
+  PImage catcher;    //the catcher will be an image
 
   Catcher (int tdiam) {    //creating the catcher
     loc=new PVector() ;    //location of the catcher is a 
     diam=tdiam;
-    hoop = loadImage("lantern.png");
+    catcher = loadImage("lantern.png");
   }
 
   void display() {
-    image(hoop, loc.x, loc.y);    //image as catcher
+    image(catcher, loc.x, loc.y);    //image as catcher
   }
 
   void update() {      

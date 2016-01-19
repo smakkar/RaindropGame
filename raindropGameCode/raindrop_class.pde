@@ -7,7 +7,7 @@ class Raindrop {
     diam = random(20, 50);
     loc = new PVector(random(diam, width-diam), 0);
     vel= new PVector(0, random(15));
-    c = color(random(255), random(255), random(255));
+    c = color(255, 233, 101);
   }
 
   //after declaring fields and setting up constructors, you can define your methods
